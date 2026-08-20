@@ -20,25 +20,50 @@ def scrape_single_page(html_content, course_id, topic_id, start_idx=1):
     containers = soup.select(".bix-div-container")
     
     for idx, c in enumerate(containers):
+        # 1. Question Text
         q_text_el = c.select_one(".bix-td-qtxt")
         if not q_text_el:
             continue
         q_text = clean_text(q_text_el.get_text(separator=" ", strip=True))
 
+        # 2. Extract Options (Handles modern IndiaBIX nested spans & divs)
         options = []
-        opt_rows = c.select(".bix-tbl-options tr, .bix-opt-row")
-        for row in opt_rows:
-            opt_id_el = row.select_one(".bix-td-option-order, .bix-opt-order")
-            opt_val_el = row.select_one(".bix-td-option-val, .bix-opt-desc")
-            if opt_id_el and opt_val_el:
-                opt_id = opt_id_el.get_text(strip=True).replace(".", "").strip()
-                opt_val = clean_text(opt_val_el.get_text(separator=" ", strip=True))
-                if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
-                    options.append({"id": opt_id, "text": opt_val})
+        option_wrappers = c.select(".bix-div-option, .bix-opt-row, tr[id^='trOption_']")
+        
+        if option_wrappers:
+            for opt_wrap in option_wrappers:
+                order_el = opt_wrap.select_one(".bix-opt-order, .bix-td-option-order, [id^='tdOptionLetter_']")
+                val_el = opt_wrap.select_one(".bix-opt-desc, .bix-td-option-val, [id^='tdOptionValue_']")
+                
+                if order_el and val_el:
+                    opt_id = order_el.get_text(strip=True).replace(".", "").replace("(", "").replace(")", "").strip().upper()
+                    opt_val = clean_text(val_el.get_text(separator=" ", strip=True))
+                    if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
+                        options.append({"id": opt_id, "text": opt_val})
+        
+        # Fallback table parser
+        if not options:
+            for row in c.select("table.bix-tbl-options tr"):
+                cells = row.find_all("td")
+                if len(cells) >= 2:
+                    opt_id = cells[0].get_text(strip=True).replace(".", "").replace("(", "").replace(")", "").strip().upper()
+                    opt_val = clean_text(cells[1].get_text(separator=" ", strip=True))
+                    if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
+                        options.append({"id": opt_id, "text": opt_val})
 
-        ans_input = c.select_one("input.jq-hdnakqb, input[name^='hdnAnq']")
-        correct_ans = ans_input.get("value", "").strip().upper() if ans_input else None
+        # 3. Correct Answer Extraction
+        correct_ans = None
+        ans_input = c.select_one("input[name^='hdnAnq'], input.jq-hdnakqb")
+        if ans_input and ans_input.get("value"):
+            correct_ans = ans_input.get("value").strip().upper()
+        else:
+            ans_div = c.select_one(".bix-div-answer, .jq-pnl-answer")
+            if ans_div:
+                match = re.search(r'Option\s*([A-E])', ans_div.get_text(), re.IGNORECASE)
+                if match:
+                    correct_ans = match.group(1).upper()
 
+        # 4. Explanation
         exp_el = c.select_one(".bix-ans-description, .div-explanation")
         explanation = clean_text(exp_el.get_text(separator=" ", strip=True)) if exp_el else None
 
@@ -54,7 +79,6 @@ def scrape_single_page(html_content, course_id, topic_id, start_idx=1):
     return questions
 
 def scrape_all_pages_of_topic(base_url, course_id, topic_id, max_pages=6):
-    """Topic ke sabhi pages (1 to N) ko follow karta hai."""
     all_topic_questions = []
     current_url = base_url
     
@@ -70,9 +94,7 @@ def scrape_all_pages_of_topic(base_url, course_id, topic_id, max_pages=6):
                 
             all_topic_questions.extend(page_qs)
             
-            # Next page ka URL find karna
             soup = BeautifulSoup(res.text, "html.parser")
-            # IndiaBIX pagination container
             pagination = soup.select(".mx-pager-container a, .pagination a")
             next_url = None
             for a in pagination:
@@ -88,12 +110,11 @@ def scrape_all_pages_of_topic(base_url, course_id, topic_id, max_pages=6):
             current_url = next_url
             
         except Exception as e:
-            print(f"Error on {current_url}: {e}")
+            print(f"Error fetching {current_url}: {e}")
             break
             
     return all_topic_questions
 
-# Topic list setup
 CONFIG_COURSES = [
     {
         "course_id": "aptitude",
@@ -148,5 +169,5 @@ if __name__ == "__main__":
     with open("master_questions.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"Extraction complete! Total questions parsed: {len(all_questions)}")
-            
+    print(f"Processed {len(all_questions)} questions with full options & answers.")
+    
