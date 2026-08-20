@@ -14,125 +14,106 @@ def clean_text(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-# ----------------- 1. Primary Source: IndiaBIX -----------------
-def scrape_indiabix(url: str, course_id: str, topic_id: str):
+def scrape_single_page(html_content, course_id, topic_id, start_idx=1):
     questions = []
-    try:
-        res = httpx.get(url, headers=HEADERS, timeout=12.0, follow_redirects=True)
-        if res.status_code == 200:
-            soup = BeautifulSoup(res.text, "html.parser")
-            containers = soup.select(".bix-div-container")
-            for idx, c in enumerate(containers):
-                q_text_el = c.select_one(".bix-td-qtxt")
-                if not q_text_el:
-                    continue
-                q_text = clean_text(q_text_el.get_text(separator=" ", strip=True))
+    soup = BeautifulSoup(html_content, "html.parser")
+    containers = soup.select(".bix-div-container")
+    
+    for idx, c in enumerate(containers):
+        q_text_el = c.select_one(".bix-td-qtxt")
+        if not q_text_el:
+            continue
+        q_text = clean_text(q_text_el.get_text(separator=" ", strip=True))
 
-                options = []
-                opt_rows = c.select(".bix-tbl-options tr, .bix-opt-row")
-                for row in opt_rows:
-                    opt_id_el = row.select_one(".bix-td-option-order, .bix-opt-order")
-                    opt_val_el = row.select_one(".bix-td-option-val, .bix-opt-desc")
-                    if opt_id_el and opt_val_el:
-                        opt_id = opt_id_el.get_text(strip=True).replace(".", "").strip()
-                        opt_val = clean_text(opt_val_el.get_text(separator=" ", strip=True))
-                        if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
-                            options.append({"id": opt_id, "text": opt_val})
+        options = []
+        opt_rows = c.select(".bix-tbl-options tr, .bix-opt-row")
+        for row in opt_rows:
+            opt_id_el = row.select_one(".bix-td-option-order, .bix-opt-order")
+            opt_val_el = row.select_one(".bix-td-option-val, .bix-opt-desc")
+            if opt_id_el and opt_val_el:
+                opt_id = opt_id_el.get_text(strip=True).replace(".", "").strip()
+                opt_val = clean_text(opt_val_el.get_text(separator=" ", strip=True))
+                if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
+                    options.append({"id": opt_id, "text": opt_val})
 
-                ans_input = c.select_one("input.jq-hdnakqb, input[name^='hdnAnq']")
-                correct_ans = ans_input.get("value", "").strip().upper() if ans_input else None
+        ans_input = c.select_one("input.jq-hdnakqb, input[name^='hdnAnq']")
+        correct_ans = ans_input.get("value", "").strip().upper() if ans_input else None
 
-                exp_el = c.select_one(".bix-ans-description, .div-explanation")
-                explanation = clean_text(exp_el.get_text(separator=" ", strip=True)) if exp_el else None
+        exp_el = c.select_one(".bix-ans-description, .div-explanation")
+        explanation = clean_text(exp_el.get_text(separator=" ", strip=True)) if exp_el else None
 
-                questions.append({
-                    "id": f"{topic_id}_{idx+1}",
-                    "source": "IndiaBIX",
-                    "course_id": course_id,
-                    "topic_id": topic_id,
-                    "question": q_text,
-                    "options": options,
-                    "correct_option": correct_ans,
-                    "explanation": explanation
-                })
-    except Exception as e:
-        print(f"[IndiaBIX Failed] {url} -> {e}")
+        questions.append({
+            "id": f"{topic_id}_{start_idx + idx}",
+            "course_id": course_id,
+            "topic_id": topic_id,
+            "question": q_text,
+            "options": options,
+            "correct_option": correct_ans,
+            "explanation": explanation
+        })
     return questions
 
-# ----------------- 2. Fallback 1: Notopedia -----------------
-def scrape_notopedia_fallback(url: str, course_id: str, topic_id: str):
-    questions = []
-    try:
-        res = httpx.get(url, headers=HEADERS, timeout=12.0, follow_redirects=True)
-        if res.status_code == 200:
+def scrape_all_pages_of_topic(base_url, course_id, topic_id, max_pages=6):
+    """Topic ke sabhi pages (1 to N) ko follow karta hai."""
+    all_topic_questions = []
+    current_url = base_url
+    
+    for page_num in range(1, max_pages + 1):
+        try:
+            res = httpx.get(current_url, headers=HEADERS, timeout=20.0, follow_redirects=True)
+            if res.status_code != 200:
+                break
+                
+            page_qs = scrape_single_page(res.text, course_id, topic_id, start_idx=len(all_topic_questions) + 1)
+            if not page_qs:
+                break
+                
+            all_topic_questions.extend(page_qs)
+            
+            # Next page ka URL find karna
             soup = BeautifulSoup(res.text, "html.parser")
-            cards = soup.select(".question-box, .post-content, .card")
-            for idx, card in enumerate(cards):
-                q_el = card.select_one("h2, h3, .q-title, p")
-                if not q_el:
-                    continue
-                q_text = clean_text(q_el.get_text(strip=True))
-                exp_el = card.select_one(".answer, .solution, .explanation")
-                explanation = clean_text(exp_el.get_text(strip=True)) if exp_el else None
+            # IndiaBIX pagination container
+            pagination = soup.select(".mx-pager-container a, .pagination a")
+            next_url = None
+            for a in pagination:
+                text = a.get_text(strip=True)
+                if text.isdigit() and int(text) == page_num + 1:
+                    next_url = a.get("href")
+                    if next_url and not next_url.startswith("http"):
+                        next_url = f"https://www.indiabix.com{next_url}"
+                    break
+            
+            if not next_url:
+                break
+            current_url = next_url
+            
+        except Exception as e:
+            print(f"Error on {current_url}: {e}")
+            break
+            
+    return all_topic_questions
 
-                questions.append({
-                    "id": f"{topic_id}_noto_{idx+1}",
-                    "source": "Notopedia",
-                    "course_id": course_id,
-                    "topic_id": topic_id,
-                    "question": q_text,
-                    "options": [],
-                    "correct_option": None,
-                    "explanation": explanation
-                })
-    except Exception as e:
-        print(f"[Notopedia Fallback Failed] {url} -> {e}")
-    return questions
-
-# ----------------- 3. Fallback 2: Magnet Brains -----------------
-def scrape_magnetbrains_fallback(url: str, course_id: str, topic_id: str):
-    questions = []
-    try:
-        res = httpx.get(url, headers=HEADERS, timeout=12.0, follow_redirects=True)
-        if res.status_code == 200:
-            soup = BeautifulSoup(res.text, "html.parser")
-            summary_block = soup.select_one(".chapter-summary, .course-description, article")
-            if summary_block:
-                summary_text = clean_text(summary_block.get_text(separator="\n", strip=True))
-                questions.append({
-                    "id": f"{topic_id}_mb_note",
-                    "source": "MagnetBrains",
-                    "course_id": course_id,
-                    "topic_id": topic_id,
-                    "question": f"Key Conceptual Summary for {topic_id.replace('_', ' ').title()}",
-                    "options": [],
-                    "correct_option": None,
-                    "explanation": summary_text
-                })
-    except Exception as e:
-        print(f"[MagnetBrains Fallback Failed] {url} -> {e}")
-    return questions
-
-# ----------------- Configuration with Multi-Source Fallbacks -----------------
+# Topic list setup
 CONFIG_COURSES = [
     {
-        "course_id": "aptitude_placement",
+        "course_id": "aptitude",
         "course_title": "Quantitative Aptitude",
         "icon": "calculate",
         "topics": [
             {
                 "topic_id": "time_and_work",
                 "topic_title": "Time and Work",
-                "primary_url": "https://www.indiabix.com/aptitude/time-and-work/",
-                "fallback_notopedia": "https://www.notopedia.com/study-material/aptitude/time-and-work",
-                "fallback_magnetbrains": "https://www.magnetbrains.com/course/class-10-maths-work-time"
+                "url": "https://www.indiabix.com/aptitude/time-and-work/"
             },
             {
                 "topic_id": "profit_and_loss",
                 "topic_title": "Profit and Loss",
-                "primary_url": "https://www.indiabix.com/aptitude/profit-and-loss/",
-                "fallback_notopedia": "https://www.notopedia.com/study-material/aptitude/profit-and-loss",
-                "fallback_magnetbrains": "https://www.magnetbrains.com/course/class-10-maths-profit-loss"
+                "url": "https://www.indiabix.com/aptitude/profit-and-loss/"
+            },
+            {
+                "topic_id": "percentage",
+                "topic_title": "Percentage",
+                "url": "https://www.indiabix.com/aptitude/percentage/"
             }
         ]
     }
@@ -150,19 +131,7 @@ if __name__ == "__main__":
             "topics": []
         }
         for t in c["topics"]:
-            # 1. Try Primary (IndiaBIX)
-            qs = scrape_indiabix(t["primary_url"], c["course_id"], t["topic_id"])
-            
-            # 2. Fallback to Notopedia if Primary fails or is empty
-            if not qs and "fallback_notopedia" in t:
-                print(f"Fallback triggered for {t['topic_id']} -> Notopedia")
-                qs = scrape_notopedia_fallback(t["fallback_notopedia"], c["course_id"], t["topic_id"])
-            
-            # 3. Fallback to Magnet Brains if secondary also fails
-            if not qs and "fallback_magnetbrains" in t:
-                print(f"Fallback triggered for {t['topic_id']} -> Magnet Brains")
-                qs = scrape_magnetbrains_fallback(t["fallback_magnetbrains"], c["course_id"], t["topic_id"])
-
+            qs = scrape_all_pages_of_topic(t["url"], c["course_id"], t["topic_id"])
             all_questions.extend(qs)
             course_entry["topics"].append({
                 "id": t["topic_id"],
@@ -179,5 +148,5 @@ if __name__ == "__main__":
     with open("master_questions.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"Data sync complete: {len(all_questions)} questions processed.")
-    
+    print(f"Extraction complete! Total questions parsed: {len(all_questions)}")
+            
