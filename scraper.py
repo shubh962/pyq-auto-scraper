@@ -5,124 +5,147 @@ import re
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.5"
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 }
 
-def clean_text(text: str) -> str:
-    if not text:
+def clean_element_text(element):
+    """HTML elements se clean human-readable text banata hai, including math fractions."""
+    if not element:
         return ""
+    
+    # Handle HTML fraction tables (e.g. 7 / 15)
+    for table in element.find_all("table"):
+        rows = table.find_all("tr")
+        if len(rows) == 2:
+            num = rows[0].get_text(strip=True)
+            den = rows[1].get_text(strip=True)
+            table.replace_with(f" {num}/{den} ")
+        else:
+            table.replace_with(f" {table.get_text(separator=' ', strip=True)} ")
+
+    text = element.get_text(separator=" ", strip=True)
     text = re.sub(r'[\r\n\t]+', ' ', text)
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-def extract_options_and_answer(container):
+def parse_question_container(c, topic_id, q_number):
+    # 1. Question Text
+    q_txt_elem = c.select_one(".bix-td-qtxt, .bix-qtxt")
+    if not q_txt_elem:
+        return None
+    question_text = clean_element_text(q_txt_elem)
+
+    # 2. Options Extraction (Universal matcher)
     options = []
-    correct_option = None
+    
+    # Strategy A: Match flex/grid option divs
+    opt_divs = c.select(".bix-div-option, .bix-opt-row, .d-flex.flex-row")
+    for d in opt_divs:
+        order = d.select_one(".bix-opt-order, .bix-td-option-order, [class*='order']")
+        val = d.select_one(".bix-opt-desc, .bix-td-option-val, [class*='desc'], [class*='val']")
+        if order and val:
+            letter = clean_element_text(order).replace(".", "").replace("(", "").replace(")", "").strip().upper()
+            txt = clean_element_text(val)
+            if letter in ["A", "B", "C", "D", "E"] and txt:
+                options.append({"id": letter, "text": txt})
 
-    # --- 1. Robust Options Parsing ---
-    # IndiaBIX table rows pattern
-    opt_rows = container.select("table.bix-tbl-options tr, tr[id^='trOption_']")
-    for row in opt_rows:
-        tds = row.find_all("td")
-        if len(tds) >= 2:
-            letter = clean_text(tds[0].get_text()).replace(".", "").replace("(", "").replace(")", "").strip().upper()
-            val = clean_text(tds[1].get_text(separator=" ", strip=True))
-            if letter in ["A", "B", "C", "D", "E"] and val:
-                options.append({"id": letter, "text": val})
-
-    # Fallback if rendered with div classes
+    # Strategy B: Match table rows if Strategy A got nothing
     if not options:
-        div_opts = container.select(".bix-div-option, .bix-opt-row, .d-flex.flex-row")
-        for d in div_opts:
-            raw = clean_text(d.get_text(separator=" ", strip=True))
-            match = re.match(r'^([A-E])[\.\)]\s*(.+)', raw)
-            if match:
-                options.append({"id": match.group(1).upper(), "text": match.group(2).strip()})
+        opt_rows = c.select("table.bix-tbl-options tr, tr[id*='trOption']")
+        for r in opt_rows:
+            tds = r.find_all("td")
+            if len(tds) >= 2:
+                letter = clean_element_text(tds[0]).replace(".", "").replace("(", "").replace(")", "").strip().upper()
+                txt = clean_element_text(tds[1])
+                if letter in ["A", "B", "C", "D", "E"] and txt:
+                    options.append({"id": letter, "text": txt})
 
-    # --- 2. Robust Correct Option Parsing ---
-    # Case A: Span text like "Option B"
-    ans_span = container.select_one(".bix-ans-option, .jq-pnl-answer, .pnl-answer")
-    if ans_span:
-        match = re.search(r'Option\s*([A-E])', ans_span.get_text(), re.IGNORECASE)
-        if match:
-            correct_option = match.group(1).upper()
+    # Strategy C: Raw regex fallback from container text
+    if not options:
+        raw_c_text = c.get_text("\n")
+        matches = re.findall(r'([A-D])[\.\)]\s*([^\n\r]+)', raw_c_text)
+        for letter, txt in matches:
+            options.append({"id": letter.upper(), "text": clean_element_text(BeautifulSoup(txt, "html.parser"))})
 
-    # Case B: Hidden input value (maps 1->A, 2->B, 3->C, 4->D)
+    # Deduplicate options
+    seen = set()
+    unique_options = []
+    for opt in options:
+        if opt["id"] not in seen:
+            seen.add(opt["id"])
+            unique_options.append(opt)
+
+    # 3. Correct Answer Extraction
+    correct_option = None
+    
+    # Check hidden inputs first
+    ans_inp = c.select_one("input[name^='hdnAnq'], input.jq-hdnakqb, input[id^='hdnAnq']")
+    if ans_inp and ans_inp.get("value"):
+        val = ans_inp.get("value").strip().upper()
+        if val in ["A", "B", "C", "D", "E"]:
+            correct_option = val
+        elif val.isdigit():
+            idx_map = {"1": "A", "2": "B", "3": "C", "4": "D", "5": "E"}
+            correct_option = idx_map.get(val)
+
+    # If not found, parse answer text block
     if not correct_option:
-        ans_input = container.select_one("input.jq-hdnakqb, input[name^='hdnAnq']")
-        if ans_input and ans_input.get("value"):
-            raw_val = ans_input.get("value").strip().upper()
-            num_map = {"1": "A", "2": "B", "3": "C", "4": "D", "5": "E"}
-            correct_option = num_map.get(raw_val, raw_val if raw_val in ["A", "B", "C", "D", "E"] else None)
+        ans_block = c.select_one(".bix-div-answer, .jq-pnl-answer, .pnl-answer")
+        if ans_block:
+            m = re.search(r'Answer:\s*Option\s*([A-E])', ans_block.get_text(), re.IGNORECASE)
+            if m:
+                correct_option = m.group(1).upper()
 
-    return options, correct_option
+    # 4. Explanation Extraction
+    exp_block = c.select_one(".bix-ans-description, .div-explanation")
+    explanation = clean_element_text(exp_block) if exp_block else None
 
-def scrape_single_page(html_content, course_id, topic_id, start_idx=1):
+    return {
+        "id": f"{topic_id}_{q_number}",
+        "question": question_text,
+        "options": unique_options,
+        "correct_option": correct_option,
+        "explanation": explanation
+    }
+
+def scrape_topic(url, course_id, topic_id, max_pages=3):
     questions = []
-    soup = BeautifulSoup(html_content, "html.parser")
-    containers = soup.select(".bix-div-container")
-    
-    for idx, c in enumerate(containers):
-        q_text_el = c.select_one(".bix-td-qtxt")
-        if not q_text_el:
-            continue
-        q_text = clean_text(q_text_el.get_text(separator=" ", strip=True))
+    current_url = url
+    q_counter = 1
 
-        options, correct_ans = extract_options_and_answer(c)
-
-        exp_el = c.select_one(".bix-ans-description, .div-explanation")
-        explanation = clean_text(exp_el.get_text(separator=" ", strip=True)) if exp_el else None
-
-        questions.append({
-            "id": f"{topic_id}_{start_idx + idx}",
-            "course_id": course_id,
-            "topic_id": topic_id,
-            "question": q_text,
-            "options": options,
-            "correct_option": correct_ans,
-            "explanation": explanation
-        })
-    return questions
-
-def scrape_all_pages_of_topic(base_url, course_id, topic_id, max_pages=6):
-    all_topic_questions = []
-    current_url = base_url
-    
-    for page_num in range(1, max_pages + 1):
+    for page in range(1, max_pages + 1):
         try:
             res = httpx.get(current_url, headers=HEADERS, timeout=20.0, follow_redirects=True)
             if res.status_code != 200:
                 break
-                
-            page_qs = scrape_single_page(res.text, course_id, topic_id, start_idx=len(all_topic_questions) + 1)
-            if not page_qs:
-                break
-                
-            all_topic_questions.extend(page_qs)
             
             soup = BeautifulSoup(res.text, "html.parser")
-            pagination = soup.select(".mx-pager-container a, .pagination a")
-            next_url = None
-            for a in pagination:
-                text = a.get_text(strip=True)
-                if text.isdigit() and int(text) == page_num + 1:
-                    next_url = a.get("href")
-                    if next_url and not next_url.startswith("http"):
-                        next_url = f"https://www.indiabix.com{next_url}"
-                    break
-            
-            if not next_url:
+            containers = soup.select(".bix-div-container")
+            if not containers:
                 break
-            current_url = next_url
-            
-        except Exception as e:
-            print(f"Error fetching {current_url}: {e}")
-            break
-            
-    return all_topic_questions
 
-CONFIG_COURSES = [
+            for c in containers:
+                q_data = parse_question_container(c, topic_id, q_counter)
+                if q_data and q_data["question"]:
+                    q_data["course_id"] = course_id
+                    q_data["topic_id"] = topic_id
+                    questions.append(q_data)
+                    q_counter += 1
+
+            # Next page check
+            next_link = soup.find("a", string=str(page + 1))
+            if next_link and next_link.get("href"):
+                next_url = next_link.get("href")
+                current_url = next_url if next_url.startswith("http") else f"https://www.indiabix.com{next_url}"
+            else:
+                break
+        except Exception as e:
+            print(f"Error scraping {current_url}: {e}")
+            break
+
+    return questions
+
+CONFIG = [
     {
         "course_id": "aptitude",
         "course_title": "Quantitative Aptitude",
@@ -148,33 +171,33 @@ CONFIG_COURSES = [
 ]
 
 if __name__ == "__main__":
-    master_courses = []
+    courses_out = []
     all_questions = []
 
-    for c in CONFIG_COURSES:
-        course_entry = {
+    for c in CONFIG:
+        c_entry = {
             "id": c["course_id"],
             "title": c["course_title"],
             "icon": c["icon"],
             "topics": []
         }
         for t in c["topics"]:
-            qs = scrape_all_pages_of_topic(t["url"], c["course_id"], t["topic_id"])
+            qs = scrape_topic(t["url"], c["course_id"], t["topic_id"], max_pages=3)
             all_questions.extend(qs)
-            course_entry["topics"].append({
+            c_entry["topics"].append({
                 "id": t["topic_id"],
                 "title": t["topic_title"],
                 "questions_count": len(qs)
             })
-        master_courses.append(course_entry)
+        courses_out.append(c_entry)
 
-    output = {
-        "courses": master_courses,
+    master_payload = {
+        "courses": courses_out,
         "questions": all_questions
     }
 
     with open("master_questions.json", "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
+        json.dump(master_payload, f, ensure_ascii=False, indent=2)
 
-    print(f"Processed {len(all_questions)} questions with accurate options & answers.")
+    print(f"DONE. Total Questions: {len(all_questions)}")
     
