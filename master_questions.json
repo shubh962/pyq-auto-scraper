@@ -8,7 +8,7 @@
         {
           "id": "time_and_work",
           "title": "Time and Work",
-          "questions_count": 30
+          "questions_count": 15
         },
         {
           "id": "profit_and_loss",
@@ -26,543 +26,527 @@
   "questions": [
     {
       "id": "time_and_work_1",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A can do a work in 15 days and B in 20 days. If they work on it together for 4 days, then the fraction of the work that is left is :",
-      "options": [],
-      "correct_option": null,
-      "explanation": "A's 1 day's work = 1 ; 15 B's 1 day's work = 1 ; 20 (A + B)'s 1 day's work = 1 + 1 = 7 . 15 20 60 (A + B)'s 4 day's work = 7 x 4 = 7 . 60 15 Therefore, Remaining work = 1 - 7 = 8 . 15 15"
+      "options": [
+        {
+          "id": "B",
+          "text": "'s 1 day's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "A's 1 day's work =1;/15 B's 1 day's work =1;/20 (A + B)'s 1 day's work =1+1=7./152060 (A + B)'s 4 day's work =7x 4=7./6015 Therefore, Remaining work =1 -7=8./1515",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_2",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A can lay railway track between two given stations in 16 days and B can do the same job in 12 days. With help of C, they did the job in 4 days only. Then, C alone can do the job in:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(A + B + C)'s 1 day's work = 1 , 4 A's 1 day's work = 1 , 16 B's 1 day's work = 1 . 12 C's 1 day's work = 1 - 1 + 1 = 1 - 7 = 5 . 4 16 12 4 48 48 So, C alone can do the work in 48 = 9 3 days. 5 5"
+      "options": [
+        {
+          "id": "C",
+          "text": "'s 1 day's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "(A + B + C)'s 1 day's work =1,/4 A's 1 day's work =1,/16 B's 1 day's work =1./12 C's 1 day's work =1-1+1=1-7=5./4161244848 So, C alone can do the work in48= 93days./55",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_3",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A, B and C can do a piece of work in 20, 30 and 60 days respectively. In how many days can A do the work if he is assisted by B and C on every third day?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "A's 2 day's work = 1 x 2 = 1 . 20 10 (A + B + C)'s 1 day's work = 1 + 1 + 1 = 6 = 1 . 20 30 60 60 10 Work done in 3 days = 1 + 1 = 1 . 10 10 5 Now, 1 work is done in 3 days. 5 Whole work will be done in (3 x 5) = 15 days."
+      "options": [
+        {
+          "id": "C",
+          "text": "'s 1 day's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "A's 2 day's work =1x 2=1./2010 (A + B + C)'s 1 day's work =1+1+1=6=1./2030606010 Work done in 3 days =1+1=1./10105 Now,1work is done in 3 days./5 Whole work will be done in (3 x 5) = 15 days.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_4",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A is thrice as good as workman as B and therefore is able to finish a job in 60 days less than B. Working together, they can do it in:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Ratio of times taken by A and B = 1 : 3. The time difference is (3 - 1) 2 days while B take 3 days and A takes 1 day. If difference of time is 2 days, B takes 3 days. If difference of time is 60 days, B takes 3 x 60 = 90 days. 2 So, A takes 30 days to do the work. A's 1 day's work = 1 30 B's 1 day's work = 1 90 (A + B)'s 1 day's work = 1 + 1 = 4 = 2 30 90 90 45 A and B together can do the work in 45 = 22 1 days. 2 2"
+      "options": [
+        {
+          "id": "B",
+          "text": "Working together, they can do it in:"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Ratio of times taken by A and B = 1 : 3. The time difference is (3 - 1) 2 days while B take 3 days and A takes 1 day. If difference of time is 2 days, B takes 3 days. If difference of time is 60 days, B takes3x 60= 90 days./2 So, A takes 30 days to do the work. A's 1 day's work =1/30 B's 1 day's work =1/90 (A + B)'s 1 day's work =1+1=4=2/30909045 A and B together can do the work in45= 221days./22",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_5",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A alone can do a piece of work in 6 days and B alone in 8 days. A and B undertook to do it for Rs. 3200. With the help of C, they completed the work in 3 days. How much is to be paid to C?",
       "options": [],
-      "correct_option": null,
-      "explanation": "C's 1 day's work = 1 - 1 + 1 = 1 - 7 = 1 . 3 6 8 3 24 24 A's wages : B's wages : C's wages = 1 : 1 : 1 = 4 : 3 : 1. 6 8 24 C's share (for 3 days) = Rs. 3 x 1 x 3200 = Rs. 400. 24"
+      "correct_option": "E",
+      "explanation": "C's 1 day's work =1-1+1=1-7=1./36832424 A's wages : B's wages : C's wages =1:1:1= 4 : 3 : 1./6824 C's share (for 3 days) = Rs.3 x1x 3200= Rs. 400./24",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_6",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "If 6 men and 8 boys can do a piece of work in 10 days while 26 men and 48 boys can do the same in 2 days, the time taken by 15 men and 20 boys in doing the same type of work will be:",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let 1 man's 1 day's work = x and 1 boy's 1 day's work = y . Then, 6 x + 8 y = 1 and 26 x + 48 y = 1 . 10 2 Solving these two equations, we get : x = 1 and y = 1 . 100 200 (15 men + 20 boy)'s 1 day's work = 15 + 20 = 1 . 100 200 4 15 men and 20 boys can do the work in 4 days."
+      "correct_option": "E",
+      "explanation": "Let 1 man's 1 day's work = x and 1 boy's 1 day's work = y . Then, 6x+ 8y=1and 26x+ 48y=1./102 Solving these two equations, we get :x=1andy=1./100200 (15 men + 20 boy)'s 1 day's work =15+20=1./1002004 15 men and 20 boys can do the work in 4 days.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_7",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A can do a piece of work in 4 hours; B and C together can do it in 3 hours, while A and C together can do it in 2 hours. How long will B alone take to do it?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "A's 1 hour's work = 1 ; 4 (B + C)'s 1 hour's work = 1 ; 3 (A + C)'s 1 hour's work = 1 . 2 (A + B + C)'s 1 hour's work = 1 + 1 = 7 . 4 3 12 B's 1 hour's work = 7 - 1 = 1 . 12 2 12 B alone will take 12 hours to do the work."
+      "options": [
+        {
+          "id": "C",
+          "text": "'s 1 hour's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "A's 1 hour's work =1;/4 (B + C)'s 1 hour's work =1;/3 (A + C)'s 1 hour's work =1./2 (A + B + C)'s 1 hour's work =1+1=7./4312 B's 1 hour's work =7-1=1./12212 B alone will take 12 hours to do the work.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_8",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A can do a certain work in the same time in which B and C together can do it. If A and B together could do it in 10 days and C alone in 50 days, then B alone could do it in:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(A + B)'s 1 day's work = 1 10 C's 1 day's work = 1 50 (A + B + C)'s 1 day's work = 1 + 1 = 6 = 3 . .... (i) 10 50 50 25 A's 1 day's work = (B + C)'s 1 day's work .... (ii) From (i) and (ii), we get: 2 x (A's 1 day's work) = 3 25 A's 1 day's work = 3 . 50 B's 1 day's work 1 - 3 = 2 = 1 . 10 50 50 25 So, B alone could do the work in 25 days."
+      "options": [
+        {
+          "id": "B",
+          "text": "'s 1 day's work ="
+        },
+        {
+          "id": "C",
+          "text": "'s 1 day's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "(A + B)'s 1 day's work =1/10 C's 1 day's work =1/50 (A + B + C)'s 1 day's work =1+1=6=3. .... (i)/10505025 A's 1 day's work = (B + C)'s 1 day's work .... (ii) From (i) and (ii), we get: 2 x (A's 1 day's work) =3/25 A's 1 day's work =3./50 B's 1 day's work1-3=2=1./10505025 So, B alone could do the work in 25 days.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_9",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A does 80% of a work in 20 days. He then calls in B and they together finish the remaining work in 3 days. How long B alone would take to do the whole work?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Whole work is done by A in 20 x 5 = 25 days. 4 Now, 1 - 4 i.e., 1 work is done by A and B in 3 days. 5 5 Whole work will be done by A and B in (3 x 5) = 15 days. A's 1 day's work = 1 , (A + B)'s 1 day's work = 1 . 25 15 B's 1 day's work = 1 - 1 = 4 = 2 . 15 25 150 75 So, B alone would do the work in 75 = 37 1 days. 2 2"
+      "options": [
+        {
+          "id": "B",
+          "text": "'s 1 day's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Whole work is done by A in20 x5= 25 days./4 Now,1 -4i.e.,1work is done by A and B in 3 days./55 Whole work will be done by A and B in (3 x 5) = 15 days. A's 1 day's work =1, (A + B)'s 1 day's work =1./2515 B's 1 day's work =1-1=4=2./152515075 So, B alone would do the work in75= 371days./22",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_10",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A machine P can print one lakh books in 8 hours, machine Q can print the same number of books in 10 hours while machine R can print them in 12 hours. All the machines are started at 9 A.M. while machine P is closed at 11 A.M. and the remaining two machines complete work. Approximately at what time will the work (to print one lakh books) be finished ?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(P + Q + R)'s 1 hour's work = 1 + 1 + 1 = 37 . 8 10 12 120 Work done by P, Q and R in 2 hours = 37 x 2 = 37 . 120 60 Remaining work = 1 - 37 = 23 . 60 60 (Q + R)'s 1 hour's work = 1 + 1 = 11 . 10 12 60 Now, 11 work is done by Q and R in 1 hour. 60 So, 23 work will be done by Q and R in 60 x 23 = 23 hours 2 hours. 60 11 60 11 So, the work will be finished approximately 2 hours after 11 A.M., i.e., around 1 P.M."
+      "options": [
+        {
+          "id": "A",
+          "text": "M. while machine P is closed at 11 A.M. and the remaining two machines complete work. Approximately at what time will the work (to print one lakh books) be finished ?"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "(P + Q + R)'s 1 hour's work =1+1+1=37./81012120 Work done by P, Q and R in 2 hours =37x 2=37./12060 Remaining work =1 -37=23./6060 (Q + R)'s 1 hour's work =1+1=11./101260 Now,11work is done by Q and R in 1 hour./60 So,23work will be done by Q and R in60x23=23hours2 hours./60116011 So, the work will be finished approximately 2 hours after 11 A.M., i.e., around 1 P.M.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_11",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A can finish a work in 18 days and B can do the same work in 15 days. B worked for 10 days and left the job. In how many days, A alone can finish the remaining work?",
       "options": [],
-      "correct_option": null,
-      "explanation": "B's 10 day's work = 1 x 10 = 2 . 15 3 Remaining work = 1 - 2 = 1 . 3 3 Now, 1 work is done by A in 1 day. 18 1 work is done by A in 18 x 1 = 6 days. 3 3"
+      "correct_option": "E",
+      "explanation": "B's 10 day's work =1x 10=2./153 Remaining work =1 -2=1./33 Now,1work is done by A in 1 day./18 1work is done by A in18 x1= 6 days./33",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_12",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "4 men and 6 women can complete a work in 8 days, while 3 men and 7 women can complete it in 10 days. In how many days will 10 women complete it?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let 1 man's 1 day's work = x and 1 woman's 1 day's work = y . Then, 4 x + 6 y = 1 and 3 x + 7 y = 1 . 8 10 Solving the two equations, we get: x = 11 , y = 1 400 400 1 woman's 1 day's work = 1 . 400 10 women's 1 day's work = 1 x 10 = 1 . 400 40 Hence, 10 women will complete the work in 40 days."
+      "correct_option": "E",
+      "explanation": "Let 1 man's 1 day's work = x and 1 woman's 1 day's work = y . Then, 4x+ 6y=1and 3x+ 7y=1./810 Solving the two equations, we get:x=11,y=1/400400 1 woman's 1 day's work =1./400 10 women's 1 day's work =1x 10=1./40040 Hence, 10 women will complete the work in 40 days.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_13",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "A and B can together finish a work 30 days. They worked together for 20 days and then B left. After another 20 days, A finished the remaining work. In how many days A alone can finish the work?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(A + B)'s 20 day's work = 1 x 20 = 2 . 30 3 Remaining work = 1 - 2 = 1 . 3 3 Now, 1 work is done by A in 20 days. 3 Therefore, the whole work will be done by A in (20 x 3) = 60 days."
+      "options": [
+        {
+          "id": "B",
+          "text": "'s 20 day's work ="
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "(A + B)'s 20 day's work =1x 20=2./303 Remaining work =1 -2=1./33 Now,1work is done by A in 20 days./3 Therefore, the whole work will be done by A in (20 x 3) = 60 days.",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_14",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "P can complete a work in 12 days working 8 hours a day. Q can complete the same work in 8 days working 10 hours a day. If both P and Q work together, working 8 hours a day, in how many days can they complete the work?",
       "options": [],
-      "correct_option": null,
-      "explanation": "P can complete the work in (12 x 8) hrs. = 96 hrs. Q can complete the work in (8 x 10) hrs. = 80 hrs. P's1 hour's work = 1 and Q's 1 hour's work = 1 . 96 80 (P + Q)'s 1 hour's work = 1 + 1 = 11 . 96 80 480 So, both P and Q will finish the work in 480 hrs. 11 Number of days of 8 hours each = 480 x 1 = 60 days = 5 5 days. 11 8 11 11"
+      "correct_option": "E",
+      "explanation": "P can complete the work in (12 x 8) hrs. = 96 hrs. Q can complete the work in (8 x 10) hrs. = 80 hrs. P's1 hour's work =1and Q's 1 hour's work =1./9680 (P + Q)'s 1 hour's work =1+1=11./9680480 So, both P and Q will finish the work in480hrs./11 Number of days of 8 hours each =480x1=60days = 55days./1181111",
+      "course_id": "aptitude",
+      "topic_id": "time_and_work"
     },
     {
       "id": "time_and_work_15",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
       "question": "10 women can complete a work in 7 days and 10 children take 14 days to complete the work. How many days will 5 women and 10 children take to complete the work?",
       "options": [],
-      "correct_option": null,
-      "explanation": "1 woman's 1 day's work = 1 70 1 child's 1 day's work = 1 140 (5 women + 10 children)'s day's work = 5 + 10 = 1 + 1 = 1 70 140 14 14 7 5 women and 10 children will complete the work in 7 days."
-    },
-    {
-      "id": "time_and_work_16",
+      "correct_option": "E",
+      "explanation": "1 woman's 1 day's work =1/70 1 child's 1 day's work =1/140 (5 women + 10 children)'s day's work =5+10=1+1=1/7014014147 5 women and 10 children will complete the work in 7 days.",
       "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "X and Y can do a piece of work in 20 days and 12 days respectively. X started the work alone and then after 4 days Y joined him till the completion of the work. How long did the work last?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Work done by X in 4 days = 1 x 4 = 1 . 20 5 Remaining work = 1 - 1 = 4 . 5 5 (X + Y)'s 1 day's work = 1 + 1 = 8 = 2 . 20 12 60 15 Now, 2 work is done by X and Y in 1 day. 15 So, 4 work will be done by X and Y in 15 x 4 = 6 days. 5 2 5 Hence, total time taken = (6 + 4) days = 10 days."
-    },
-    {
-      "id": "time_and_work_17",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A is 30% more efficient than B. How much time will they, working together, take to complete a job which A alone could have done in 23 days?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Ratio of times taken by A and B = 100 : 130 = 10 : 13. Suppose B takes x days to do the work. Then, 10 : 13 :: 23 : x x = 23 x 13 x = 299 . 10 10 A's 1 day's work = 1 ; 23 B's 1 day's work = 10 . 299 (A + B)'s 1 day's work = 1 + 10 = 23 = 1 . 23 299 299 13 Therefore, A and B together can complete the work in 13 days."
-    },
-    {
-      "id": "time_and_work_18",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "Ravi and Kumar are working on an assignment. Ravi takes 6 hours to type 32 pages on a computer, while Kumar takes 5 hours to type 40 pages. How much time will they take, working together on two different computers to type an assignment of 110 pages?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Number of pages typed by Ravi in 1 hour = 32 = 16 . 6 3 Number of pages typed by Kumar in 1 hour = 40 = 8. 5 Number of pages typed by both in 1 hour = 16 + 8 = 40 . 3 3 Time taken by both to type 110 pages = 110 x 3 hours 40 = 8 1 hours (or) 8 hours 15 minutes. 4"
-    },
-    {
-      "id": "time_and_work_19",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A, B and C can complete a piece of work in 24, 6 and 12 days respectively. Working together, they will complete the same work in:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Formula: If A can do a piece of work in n days, then A's 1 day's work = 1 . n (A + B + C)'s 1 day's work = 1 + 1 + 1 = 7 . 24 6 12 24 Formula: If A's 1 day's work = 1 , then A can finish the work in n days. n So, all the three together will complete the job in 24 days = 3 3 days. 7 7"
-    },
-    {
-      "id": "time_and_work_20",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "Sakshi can do a piece of work in 20 days. Tanya is 25% more efficient than Sakshi. The number of days taken by Tanya to do the same piece of work is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Ratio of times taken by Sakshi and Tanya = 125 : 100 = 5 : 4. Suppose Tanya takes x days to do the work. 5 : 4 :: 20 : x x = 4 x 20 5 x = 16 days. Hence, Tanya takes 16 days to complete the work."
-    },
-    {
-      "id": "time_and_work_21",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A takes twice as much time as B or thrice as much time as C to finish a piece of work. Working together, they can finish the work in 2 days. B can do the work alone in:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Suppose A, B and C take x , x and x days respectively to finish the work. 2 3 Then, 1 + 2 + 3 = 1 x x x 2 6 = 1 x 2 x = 12. So, B takes (12/2) = 6 days to finish the work."
-    },
-    {
-      "id": "time_and_work_22",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A and B can complete a work in 15 days and 10 days respectively. They started doing the work together but after 2 days B had to leave and A alone completed the remaining work. The whole work was completed in :",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(A + B)'s 1 day's work = 1 + 1 = 1 . 15 10 6 Work done by A and B in 2 days = 1 x 2 = 1 . 6 3 Remaining work = 1 - 1 = 2 . 3 3 Now, 1 work is done by A in 1 day. 15 2 work will be done by a in 15 x 2 = 10 days. 3 3 Hence, the total time taken = (10 + 2) = 12 days."
-    },
-    {
-      "id": "time_and_work_23",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A and B can do a piece of work in 30 days, while B and C can do the same work in 24 days and C and A in 20 days. They all work together for 10 days when B and C leave. How many days more will A take to finish the work?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "2(A + B + C)'s 1 day's work = 1 + 1 + 1 = 15 = 1 . 30 24 20 120 8 Therefore, (A + B + C)'s 1 day's work = 1 = 1 . 2 x 8 16 Work done by A, B, C in 10 days = 10 = 5 . 16 8 Remaining work = 1 - 5 = 3 . 8 8 A's 1 day's work = 1 - 1 = 1 . 16 24 48 Now, 1 work is done by A in 1 day. 48 So, 3 work will be done by A in 48 x 3 = 18 days. 8 8"
-    },
-    {
-      "id": "time_and_work_24",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A works twice as fast as B. If B can complete a work in 12 days independently, the number of days in which A and B can together finish the work in :",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Ratio of rates of working of A and B = 2 : 1. So, ratio of times taken = 1 : 2. B's 1 day's work = 1 . 12 A's 1 day's work = 1 ; (2 times of B's work) 6 (A + B)'s 1 day's work = 1 + 1 = 3 = 1 . 6 12 12 4 So, A and B together can finish the work in 4 days."
-    },
-    {
-      "id": "time_and_work_25",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "Twenty women can do a work in sixteen days. Sixteen men can complete the same work in fifteen days. What is the ratio between the capacity of a man and a woman?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(20 x 16) women can complete the work in 1 day. 1 woman's 1 day's work = 1 . 320 (16 x 15) men can complete the work in 1 day. 1 man's 1 day's work = 1 240 So, required ratio = 1 : 1 240 320 = 1 : 1 3 4 = 4 : 3 (cross multiplied)"
-    },
-    {
-      "id": "time_and_work_26",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A and B can do a work in 8 days, B and C can do the same work in 12 days. A, B and C together can finish it in 6 days. A and C together will do it in :",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(A + B + C)'s 1 day's work = 1 ; 6 (A + B)'s 1 day's work = 1 ; 8 (B + C)'s 1 day's work = 1 . 12 (A + C)'s 1 day's work = 2 x 1 - 1 + 1 6 8 12 = 1 - 5 3 24 = 3 24 = 1 . 8 So, A and C together will do the work in 8 days."
-    },
-    {
-      "id": "time_and_work_27",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A can finish a work in 24 days, B in 9 days and C in 12 days. B and C start the work but are forced to leave after 3 days. The remaining work was done by A in:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(B + C)'s 1 day's work = 1 + 1 = 7 . 9 12 36 Work done by B and C in 3 days = 7 x 3 = 7 . 36 12 Remaining work = 1 - 7 = 5 . 12 12 Now, 1 work is done by A in 1 day. 24 So, 5 work is done by A in 24 x 5 = 10 days. 12 12"
-    },
-    {
-      "id": "time_and_work_28",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "X can do a piece of work in 40 days. He works at it for 8 days and then Y finished it in 16 days. How long will they together take to complete the work?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Work done by X in 8 days = 1 x 8 = 1 . 40 5 Remaining work = 1 - 1 = 4 . 5 5 Now, 4 work is done by Y in 16 days. 5 Whole work will be done by Y in 16 x 5 = 20 days. 4 X's 1 day's work = 1 , Y's 1 day's work = 1 . 40 20 (X + Y)'s 1 day's work = 1 + 1 = 3 . 40 20 40 Hence, X and Y will together complete the work in 40 = 13 1 days. 3 3"
-    },
-    {
-      "id": "time_and_work_29",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A and B can do a job together in 7 days. A is 1 times as efficient as B. The same job can be done by A alone in :",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(A's 1 day's work) : (B's 1 day's work) = 7 : 1 = 7 : 4. 4 Let A's and B's 1 day's work be 7 x and 4 x respectively. Then, 7 x + 4 x = 1 11 x = 1 x = 1 . 7 7 77 A's 1 day's work = 1 x 7 = 1 . 77 11"
-    },
-    {
-      "id": "time_and_work_30",
-      "course_id": "aptitude",
-      "topic_id": "time_and_work",
-      "question": "A and B together can do a piece of work in 30 days. A having worked for 16 days, B finishes the remaining work alone in 44 days. In how many days shall B finish the whole work alone?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Let A's 1 day's work = x and B's 1 day's work = y . Then, x + y = 1 and 16 x + 44 y = 1. 30 Solving these two equations, we get: x = 1 and y = 1 60 60 B's 1 day's work = 1 . 60 Hence, B alone shall finish the whole work in 60 days."
+      "topic_id": "time_and_work"
     },
     {
       "id": "profit_and_loss_1",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "Alfred buys an old scooter for Rs. 4700 and spends Rs. 800 on its repairs. If he sells the scooter for Rs. 5800, his gain percent is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Cost Price (C.P.) = Rs. (4700 + 800) = Rs. 5500. Selling Price (S.P.) = Rs. 5800. Gain = (S.P.) - (C.P.) = Rs.(5800 - 5500) = Rs. 300. Gain % = 300 x 100 % = 5 5 % 5500 11"
+      "options": [
+        {
+          "id": "C",
+          "text": "P.) = Rs. (4700 + 800) = Rs. 5500."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Cost Price (C.P.) = Rs. (4700 + 800) = Rs. 5500. Selling Price (S.P.) = Rs. 5800. Gain = (S.P.) - (C.P.) = Rs.(5800 - 5500) = Rs. 300. Gain % =300x 100%= 55%/550011",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_2",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "The cost price of 20 articles is the same as the selling price of x articles. If the profit is 25%, then the value of x is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Let C.P. of each article be Re. 1 C.P. of x articles = Rs. x . S.P. of x articles = Rs. 20. Profit = Rs. (20 - x ). 20 - x x 100 = 25 x 2000 - 100 x = 25 x 125 x = 2000 x = 16. Video Explanation: https://youtu.be/sidqvjUoZxY"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. of each article be Re. 1 C.P. of"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Let C.P. of each article be Re. 1 C.P. of x articles = Rs. x . S.P. of x articles = Rs. 20. Profit = Rs. (20 - x ). 20 -xx 100 = 25/x 2000 - 100 x = 25 x 125 x = 2000 x = 16. Video Explanation: https://youtu.be/sidqvjUoZxY",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_3",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "If selling price is doubled, the profit triples. Find the profit percent.",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Let C.P. be Rs. x and S.P. be Rs. y . Then, 3( y - x ) = (2 y - x ) y = 2 x . Profit = Rs. ( y - x ) = Rs. (2 x - x ) = Rs. x . Profit % = x x 100 % = 100% x Video Explanation: https://youtu.be/dPzF10mGsWE"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. be Rs."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Let C.P. be Rs. x and S.P. be Rs. y . Then, 3( y - x ) = (2 y - x ) y = 2 x . Profit = Rs. ( y - x ) = Rs. (2 x - x ) = Rs. x . Profit % =xx 100% = 100%/x Video Explanation: https://youtu.be/dPzF10mGsWE",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_4",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "In a certain store, the profit is 320% of the cost. If the cost increases by 25% but the selling price remains constant, approximately what percentage of the selling price is the profit?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Let C.P.= Rs. 100. Then, Profit = Rs. 320, S.P. = Rs. 420. New C.P. = 125% of Rs. 100 = Rs. 125 New S.P. = Rs. 420. Profit = Rs. (420 - 125) = Rs. 295. Required percentage = 295 x 100 % = 1475 % = 70% (approximately). 420 21 Video Explanation: https://youtu.be/bQA8SB8ycbw"
+      "options": [
+        {
+          "id": "C",
+          "text": "P.= Rs. 100. Then, Profit = Rs. 320, S.P. = Rs. 420."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Let C.P.= Rs. 100. Then, Profit = Rs. 320, S.P. = Rs. 420. New C.P. = 125% of Rs. 100 = Rs. 125 New S.P. = Rs. 420. Profit = Rs. (420 - 125) = Rs. 295. Required percentage =295x 100%=1475% = 70% (approximately)./42021 Video Explanation: https://youtu.be/bQA8SB8ycbw",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_5",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "A vendor bought toffees at 6 for a rupee. How many for a rupee must he sell to gain 20%?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "C.P. of 6 toffees = Re. 1 S.P. of 6 toffees = 120% of Re. 1 = Rs. 6 5 For Rs. 6 , toffees sold = 6. 5 For Re. 1, toffees sold = 6 x 5 = 5. 6 Video Explanation: https://youtu.be/7wKrnZ0LKA8"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. of 6 toffees = Re. 1"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "C.P. of 6 toffees = Re. 1 S.P. of 6 toffees = 120% of Re. 1 = Rs.6/5 For Rs.6, toffees sold = 6./5 For Re. 1, toffees sold =6 x5= 5./6 Video Explanation: https://youtu.be/7wKrnZ0LKA8",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_6",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "The percentage profit earned by selling an article for Rs. 1920 is equal to the percentage loss incurred by selling the same article for Rs. 1280. At what price should the article be sold to make 25% profit?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Let C.P. be Rs. x . Then, 1920 - x x 100 = x - 1280 x 100 x x 1920 - x = x - 1280 2 x = 3200 x = 1600 Required S.P. = 125% of Rs. 1600 = Rs. 125 x 1600 = Rs 2000. 100 Video Explanation: https://youtu.be/0tTd5TwCspY"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. be Rs."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Let C.P. be Rs. x . Then,1920 -xx 100 =x- 1280x 100/xx 1920 - x = x - 1280 2 x = 3200 x = 1600 Required S.P. = 125% of Rs. 1600 = Rs.125x 1600= Rs 2000./100 Video Explanation: https://youtu.be/0tTd5TwCspY",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_7",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "A shopkeeper expects a gain of 22.5% on his cost price. If in a week, his sale was of Rs. 392, what was his profit?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "C.P. = Rs. 100 x 392 = Rs. 1000 x 392 = Rs. 320 122.5 1225 Profit = Rs. (392 - 320) = Rs. 72. Video Explanation: https://youtu.be/a36nJFgh5yk"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. = Rs."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "C.P. = Rs.100x 392= Rs.1000x 392= Rs. 320/122.51225 Profit = Rs. (392 - 320) = Rs. 72. Video Explanation: https://youtu.be/a36nJFgh5yk",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_8",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "A man buys a cycle for Rs. 1400 and sells it at a loss of 15%. What is the selling price of the cycle?",
       "options": [],
-      "correct_option": null,
-      "explanation": "S.P. = 85% of Rs. 1400 = Rs. 85 x 1400 = Rs. 1190 100 Video Explanation: https://youtu.be/jn0XIafQvAc"
+      "correct_option": "E",
+      "explanation": "S.P. = 85% of Rs. 1400 = Rs.85x 1400= Rs. 1190/100 Video Explanation: https://youtu.be/jn0XIafQvAc",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_9",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "Sam purchased 20 dozens of toys at the rate of Rs. 375 per dozen. He sold each one of them at the rate of Rs. 33. What was his percentage profit?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Cost Price of 1 toy = Rs. 375 = Rs. 31.25 12 Selling Price of 1 toy = Rs. 33 So, Gain = Rs. (33 - 31.25) = Rs. 1.75 Profit % = 1.75 x 100 % = 28 % = 5.6% 31.25 5 Video Explanation: https://youtu.be/MhswuvDVWzo"
+      "correct_option": "E",
+      "explanation": "Cost Price of 1 toy = Rs.375= Rs. 31.25/12 Selling Price of 1 toy = Rs. 33 So, Gain = Rs. (33 - 31.25) = Rs. 1.75 Profit % =1.75x 100%=28% = 5.6%/31.255 Video Explanation: https://youtu.be/MhswuvDVWzo",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_10",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "Some articles were bought at 6 articles for Rs. 5 and sold at 5 articles for Rs. 6. Gain percent is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Suppose, number of articles bought = L.C.M. of 6 and 5 = 30. C.P. of 30 articles = Rs. 5 x 30 = Rs. 25. 6 S.P. of 30 articles = Rs. 6 x 30 = Rs. 36. 5 Gain % = 11 x 100 % = 44%. 25"
+      "options": [
+        {
+          "id": "C",
+          "text": "M. of 6 and 5 = 30."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "Suppose, number of articles bought = L.C.M. of 6 and 5 = 30. C.P. of 30 articles = Rs.5x 30= Rs. 25./6 S.P. of 30 articles = Rs.6x 30= Rs. 36./5 Gain % =11x 100% = 44%./25",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_11",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "On selling 17 balls at Rs. 720, there is a loss equal to the cost price of 5 balls. The cost price of a ball is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "(C.P. of 17 balls) - (S.P. of 17 balls) = (C.P. of 5 balls) C.P. of 12 balls = S.P. of 17 balls = Rs.720. C.P. of 1 ball = Rs. 720 = Rs. 60. 12"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. of 17 balls) - (S.P. of 17 balls) = (C.P. of 5 balls)"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "(C.P. of 17 balls) - (S.P. of 17 balls) = (C.P. of 5 balls) C.P. of 12 balls = S.P. of 17 balls = Rs.720. C.P. of 1 ball = Rs.720= Rs. 60./12",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_12",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "When a plot is sold for Rs. 18,700, the owner loses 15%. At what price must that plot be sold in order to gain 15%?",
       "options": [],
-      "correct_option": null,
-      "explanation": "85 : 18700 = 115 : x x = 18700 x 115 = 25300. 85 Hence, S.P. = Rs. 25,300."
+      "correct_option": "E",
+      "explanation": "85 : 18700 = 115 : x x=18700 x 115= 25300./85 Hence, S.P. = Rs. 25,300.",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_13",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "100 oranges are bought at the rate of Rs. 350 and sold at the rate of Rs. 48 per dozen. The percentage of profit or loss is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "C.P. of 1 orange = Rs. 350 = Rs. 3.50 100 S.P. of 1 orange = Rs. 48 = Rs. 4 12 Gain% = 0.50 x 100 % = 100 % = 14 2 % 3.50 7 7"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. of 1 orange = Rs."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "C.P. of 1 orange = Rs.350= Rs. 3.50/100 S.P. of 1 orange = Rs.48= Rs. 4/12 Gain% =0.50x 100%=100% = 142%/3.5077",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_14",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "A shopkeeper sells one transistor for Rs. 840 at a gain of 20% and another for Rs. 960 at a loss of 4%. His total gain or loss percent is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "C.P. of 1 st transistor = Rs. 100 x 840 = Rs. 700. 120 C.P. of 2 nd transistor = Rs. 100 x 960 = Rs. 1000 96 So, total C.P. = Rs. (700 + 1000) = Rs. 1700. Total S.P. = Rs. (840 + 960) = Rs. 1800. Gain % = 100 x 100 % = 5 15 % 1700 17"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. of 1"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "C.P. of 1sttransistor = Rs.100x 840= Rs. 700./120 C.P. of 2ndtransistor = Rs.100x 960= Rs. 1000/96 So, total C.P. = Rs. (700 + 1000) = Rs. 1700. Total S.P. = Rs. (840 + 960) = Rs. 1800. Gain % =100x 100%= 515%/170017",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "profit_and_loss_15",
-      "course_id": "aptitude",
-      "topic_id": "profit_and_loss",
       "question": "A trader mixes 26 kg of rice at Rs. 20 per kg with 30 kg of rice of other variety at Rs. 36 per kg and sells the mixture at Rs. 30 per kg. His profit percent is:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "C.P. of 56 kg rice = Rs. (26 x 20 + 30 x 36) = Rs. (520 + 1080) = Rs. 1600. S.P. of 56 kg rice = Rs. (56 x 30) = Rs. 1680. Gain = 80 x 100 % = 5%. 1600"
+      "options": [
+        {
+          "id": "C",
+          "text": "P. of 56 kg rice = Rs. (26 x 20 + 30 x 36) = Rs. (520 + 1080) = Rs. 1600."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "C.P. of 56 kg rice = Rs. (26 x 20 + 30 x 36) = Rs. (520 + 1080) = Rs. 1600. S.P. of 56 kg rice = Rs. (56 x 30) = Rs. 1680. Gain =80x 100% = 5%./1600",
+      "course_id": "aptitude",
+      "topic_id": "profit_and_loss"
     },
     {
       "id": "percentage_1",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "A batsman scored 110 runs which included 3 boundaries and 8 sixes. What percent of his total score did he make by running between the wickets?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Number of runs made by running = 110 - (3 x 4 + 8 x 6) = 110 - (60) = 50. Required percentage = 50 x 100 % = 45 5 % 110 11 Video Explanation: https://youtu.be/X2zTnABqEHU"
+      "correct_option": "E",
+      "explanation": "Number of runs made by running = 110 - (3 x 4 + 8 x 6) = 110 - (60) = 50. Required percentage =50x 100% = 455%/11011 Video Explanation: https://youtu.be/X2zTnABqEHU",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_2",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "Two students appeared at an examination. One of them secured 9 marks more than the other and his marks was 56% of the sum of their marks. The marks obtained by them are:",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let their marks be ( x + 9) and x . Then, x + 9 = 56 ( x + 9 + x ) 100 25( x + 9) = 14(2 x + 9) 3 x = 99 x = 33 So, their marks are 42 and 33."
+      "correct_option": "E",
+      "explanation": "Let their marks be ( x + 9) and x . Then,x+ 9 =56(x+ 9 +x)/100 25( x + 9) = 14(2 x + 9) 3 x = 99 x = 33 So, their marks are 42 and 33.",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_3",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "A fruit seller had some apples. He sells 40% apples and still has 420 apples. Originally, he had:",
       "options": [],
-      "correct_option": null,
-      "explanation": "Suppose originally he had x apples. Then, (100 - 40)% of x = 420. 60 x x = 420 100 x = 420 x 100 = 700. 60 Video Explanation: https://youtu.be/-Pv25Do3WwY"
+      "correct_option": "E",
+      "explanation": "Suppose originally he had x apples. Then, (100 - 40)% of x = 420. 60xx= 420/100 x=420 x 100= 700./60 Video Explanation: https://youtu.be/-Pv25Do3WwY",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_4",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "What percentage of numbers from 1 to 70 have 1 or 9 in the unit's digit?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Clearly, the numbers which have 1 or 9 in the unit's digit, have squares that end in the digit 1. Such numbers from 1 to 70 are 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69. Number of such number =14 Required percentage = 14 x 100 % = 20%. 70 Video Explanation: https://youtu.be/cBamI6iRNIA"
+      "correct_option": "E",
+      "explanation": "Clearly, the numbers which have 1 or 9 in the unit's digit, have squares that end in the digit 1. Such numbers from 1 to 70 are 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69. Number of such number =14 Required percentage =14x 100% = 20%./70 Video Explanation: https://youtu.be/cBamI6iRNIA",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_5",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "If A = x % of y and B = y % of x , then which of the following is true?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "x % of y = x x y = y x x = y % of x 100 100 A = B."
+      "options": [
+        {
+          "id": "B",
+          "text": "A is greater than B"
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "x% ofy=xxy=yxx=y% ofx/100100 A = B.",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_6",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "If 20% of a = b , then b % of 20 is the same as:",
       "options": [],
-      "correct_option": null,
-      "explanation": "20% of a = b 20 a = b . 100 b % of 20 = b x 20 = 20 a x 1 x 20 = 4 a = 4% of a . 100 100 100 100"
+      "correct_option": "E",
+      "explanation": "20% ofa=b20a=b./100 b% of 20 =bx 20=20ax1x 20=4a= 4% ofa./100100100100",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_7",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "In a certain school, 20% of students are below 8 years of age. The number of students above 8 years of age is of the number of students of 8 years of age which is 48. What is the total number of students in the school?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let the number of students be x . Then, Number of students above 8 years of age = (100 - 20)% of x = 80% of x . 80% of x = 48 + 2 of 48 3 80 x = 80 100 x = 100. Video Explanation: https://youtu.be/yPfocU6DA2M"
+      "correct_option": "E",
+      "explanation": "Let the number of students be x . Then, Number of students above 8 years of age = (100 - 20)% of x = 80% of x . 80% ofx= 48 +2of 48/3 80x= 80/100 x = 100. Video Explanation: https://youtu.be/yPfocU6DA2M",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_8",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "Two numbers A and B are such that the sum of 5% of A and 4% of B is two-third of the sum of 6% of A and 8% of B. Find the ratio of A : B.",
-      "options": [],
-      "correct_option": null,
-      "explanation": "5% of A + 4% of B = 2 (6% of A + 8% of B) 3 5 A + 4 B = 2 6 A + 8 B 100 100 3 100 100 1 A + 1 B = 1 A + 4 B 20 25 25 75 1 - 1 A = 4 - 1 B 20 25 75 25 1 A = 1 B 100 75 A = 100 = 4 . B 75 3 Required ratio = 4 : 3 Video Explanation: YouTube Video"
+      "options": [
+        {
+          "id": "B",
+          "text": "Find the ratio of A : B."
+        }
+      ],
+      "correct_option": "E",
+      "explanation": "5% of A + 4% of B =2(6% of A + 8% of B)/3 5A +4B=26A +8B/1001003100100 1A +1B=1A +4B/20252575 1-1A =4-1B/20257525 1A =1B/10075 A=100=4./B753 Required ratio = 4 : 3 Video Explanation: YouTube Video",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_9",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
-      "question": "A student multiplied a number by 3 instead of 5 . 5 3 What is the percentage error in the calculation?",
+      "question": "A student multiplied a number by3instead of5./53 What is the percentage error in the calculation?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let the number be x . Then, error = 5 x - 3 x = 16 x . 3 5 15 Error% = 16 x x 3 x 100 % = 64%. 15 5 x"
+      "correct_option": "E",
+      "explanation": "Let the number be x . Then, error =5x-3x=16x./3515 Error% =16xx3x 100% = 64%./155x",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_10",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "In an election between two candidates, one got 55% of the total valid votes, 20% of the votes were invalid. If the total number of votes was 7500, the number of valid votes that the other candidate got, was:",
       "options": [],
-      "correct_option": null,
-      "explanation": "Number of valid votes = 80% of 7500 = 6000. Valid votes polled by other candidate = 45% of 6000 = 45 x 6000 = 2700. 100"
+      "correct_option": "E",
+      "explanation": "Number of valid votes = 80% of 7500 = 6000. Valid votes polled by other candidate = 45% of 6000 =45x 6000= 2700./100",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_11",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "Three candidates contested an election and received 1136, 7636 and 11628 votes respectively. What percentage of the total votes did the winning candidate get?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Total number of votes polled = (1136 + 7636 + 11628) = 20400. Required percentage = 11628 x 100 % = 57%. 20400"
+      "correct_option": "E",
+      "explanation": "Total number of votes polled = (1136 + 7636 + 11628) = 20400. Required percentage =11628x 100% = 57%./20400",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_12",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "Two tailors X and Y are paid a total of Rs. 550 per week by their employer. If X is paid 120 percent of the sum paid to Y, how much is Y paid per week?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let the sum paid to Y per week be Rs. z . Then, z + 120% of z = 550. z + 120 z = 550 100 11 z = 550 5 z = 550 x 5 = 250. 11"
+      "correct_option": "E",
+      "explanation": "Let the sum paid to Y per week be Rs. z . Then, z + 120% of z = 550. z+120z= 550/100 11z= 550/5 z=550 x 5= 250./11",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_13",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "Gauri went to the stationers and bought things worth Rs. 25, out of which 30 paise went on sales tax on taxable purchases. If the tax rate was 6%, then what was the cost of the tax free items?",
       "options": [],
-      "correct_option": null,
-      "explanation": "Let the amount taxable purchases be Rs. x . Then, 6% of x = 30 100 x = 30 x 100 = 5. 100 6 Cost of tax free items = Rs. [25 - (5 + 0.30)] = Rs. 19.70"
+      "correct_option": "E",
+      "explanation": "Let the amount taxable purchases be Rs. x . Then, 6% ofx=30/100 x=30x100= 5./1006 Cost of tax free items = Rs. [25 - (5 + 0.30)] = Rs. 19.70",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_14",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "Rajeev buys good worth Rs. 6650. He gets a rebate of 6% on it. After getting the rebate, he pays sales tax @ 10%. Find the amount he will have to pay for the goods.",
       "options": [],
-      "correct_option": null,
-      "explanation": "Rebate = 6% of Rs. 6650 = Rs. 6 x 6650 = Rs. 399. 100 Sales tax = 10% of Rs. (6650 - 399) = Rs. 10 x 6251 = Rs. 625.10 100 Final amount = Rs. (6251 + 625.10) = Rs. 6876.10 Video Explanation: https://youtu.be/XuiggCTh3SU"
+      "correct_option": "E",
+      "explanation": "Rebate = 6% of Rs. 6650 = Rs.6x 6650= Rs. 399./100 Sales tax = 10% of Rs. (6650 - 399) = Rs.10x 6251= Rs. 625.10/100 Final amount = Rs. (6251 + 625.10) = Rs. 6876.10 Video Explanation: https://youtu.be/XuiggCTh3SU",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     },
     {
       "id": "percentage_15",
-      "course_id": "aptitude",
-      "topic_id": "percentage",
       "question": "The population of a town increased from 1,75,000 to 2,62,500 in a decade. The average percent increase of population per year is:",
       "options": [],
-      "correct_option": null,
-      "explanation": "Increase in 10 years = (262500 - 175000) = 87500. Increase% = 87500 x 100 % = 50%. 175000 Required average = 50 % = 5%. 10"
+      "correct_option": "E",
+      "explanation": "Increase in 10 years = (262500 - 175000) = 87500. Increase% =87500x 100% = 50%./175000 Required average =50% = 5%./10",
+      "course_id": "aptitude",
+      "topic_id": "percentage"
     }
   ]
 }
