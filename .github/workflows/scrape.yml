@@ -1,0 +1,37 @@
+name: Auto Scraper Worker
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Roz raat ko 2:00 AM UTC par chalega
+  workflow_dispatch:     # Isse tum mobile se manually 1-tap me bhi run kar sakte ho
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install httpx beautifulsoup4
+
+      - name: Run Scraper Script
+        run: python scraper.py
+
+      - name: Commit & Push Updated Data
+        run: |
+          git config --global user.name "GitHub Action AutoBot"
+          git config --global user.email "bot@github.com"
+          git add master_questions.json
+          git commit -m "Auto-update PYQ master dataset" || exit 0
+          git push
+          
