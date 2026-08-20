@@ -8,11 +8,9 @@ HEADERS = {
 }
 
 def clean_text(text: str) -> str:
-    """Extra newlines, HTML artifacts aur messy spaces clean karta hai."""
     if not text:
         return ""
-    # Remove HTML entities like \n1\n;
-    text = re.sub(r'\\n|\n+', ' ', text)
+    text = re.sub(r'[\r\n\t]+', ' ', text)
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
@@ -27,34 +25,32 @@ def fetch_indiabix_questions():
             containers = soup.select(".bix-div-container")
             
             for idx, c in enumerate(containers):
-                # 1. Question Text
+                # 1. Question
                 q_text_el = c.select_one(".bix-td-qtxt")
                 if not q_text_el:
                     continue
                 q_text = clean_text(q_text_el.get_text(separator=" ", strip=True))
 
-                # 2. Options Extraction
+                # 2. Options (Handles tables, lists, and plain rows)
                 options = []
-                # IndiaBIX uses table rows or flex divs for options
-                opt_rows = c.select(".bix-tbl-options tr, .bix-opt-row")
-                for row in opt_rows:
-                    opt_id_el = row.select_one(".bix-td-option-order, .bix-opt-order")
-                    opt_val_el = row.select_one(".bix-td-option-val, .bix-opt-desc")
-                    
-                    if opt_id_el and opt_val_el:
-                        opt_id = opt_id_el.get_text(strip=True).replace(".", "").replace("(", "").replace(")", "").strip()
-                        opt_text = clean_text(opt_val_el.get_text(separator=" ", strip=True))
-                        options.append({
-                            "id": opt_id,
-                            "text": opt_text
-                        })
+                opt_tables = c.select(".bix-tbl-options tr")
+                for row in opt_tables:
+                    text_cells = row.select("td")
+                    if len(text_cells) >= 2:
+                        opt_id = text_cells[0].get_text(strip=True).replace(".", "").replace("(", "").replace(")", "").strip()
+                        opt_val = clean_text(text_cells[1].get_text(strip=True))
+                        if opt_id in ["A", "B", "C", "D", "E"]:
+                            options.append({"id": opt_id, "text": opt_val})
 
                 # 3. Correct Answer
-                ans_input = c.select_one("input.jq-hdnakqb")
-                correct_ans = ans_input.get("value", "").strip() if ans_input else None
+                ans_el = c.select_one(".jq-hdnakqb, .pnl-answer")
+                correct_ans = None
+                if ans_el:
+                    correct_ans = ans_el.get("value") or ans_el.get_text(strip=True)
+                    correct_ans = correct_ans.replace("Answer:", "").strip()
 
-                # 4. Step-by-Step Explanation
-                exp_el = c.select_one(".bix-ans-description")
+                # 4. Explanation
+                exp_el = c.select_one(".bix-ans-description, .div-explanation")
                 explanation = clean_text(exp_el.get_text(separator=" ", strip=True)) if exp_el else None
 
                 questions.append({
@@ -73,9 +69,7 @@ def fetch_indiabix_questions():
 
 if __name__ == "__main__":
     new_data = fetch_indiabix_questions()
-    
     with open("master_questions.json", "w", encoding="utf-8") as f:
         json.dump(new_data, f, ensure_ascii=False, indent=2)
-        
     print(f"Successfully processed {len(new_data)} clean questions.")
     
