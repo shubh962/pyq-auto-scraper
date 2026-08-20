@@ -14,23 +14,6 @@
           "id": "profit_and_loss",
           "title": "Profit and Loss",
           "questions_count": 5
-        },
-        {
-          "id": "percentage",
-          "title": "Percentage",
-          "questions_count": 5
-        }
-      ]
-    },
-    {
-      "id": "cs_engineering",
-      "title": "Computer Science (C / Data Structures)",
-      "icon": "code",
-      "topics": [
-        {
-          "id": "c_pointers",
-          "title": "C Programming - Pointers",
-          "questions_count": 5
         }
       ]
     }
@@ -38,6 +21,7 @@
   "questions": [
     {
       "id": "time_and_work_1",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "time_and_work",
       "question": "A can do a work in 15 days and B in 20 days. If they work on it together for 4 days, then the fraction of the work that is left is :",
@@ -47,6 +31,7 @@
     },
     {
       "id": "time_and_work_2",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "time_and_work",
       "question": "A can lay railway track between two given stations in 16 days and B can do the same job in 12 days. With help of C, they did the job in 4 days only. Then, C alone can do the job in:",
@@ -56,6 +41,7 @@
     },
     {
       "id": "time_and_work_3",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "time_and_work",
       "question": "A, B and C can do a piece of work in 20, 30 and 60 days respectively. In how many days can A do the work if he is assisted by B and C on every third day?",
@@ -65,6 +51,7 @@
     },
     {
       "id": "time_and_work_4",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "time_and_work",
       "question": "A is thrice as good as workman as B and therefore is able to finish a job in 60 days less than B. Working together, they can do it in:",
@@ -74,6 +61,7 @@
     },
     {
       "id": "time_and_work_5",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "time_and_work",
       "question": "A alone can do a piece of work in 6 days and B alone in 8 days. A and B undertook to do it for Rs. 3200. With the help of C, they completed the work in 3 days. How much is to be paid to C?",
@@ -83,6 +71,7 @@
     },
     {
       "id": "profit_and_loss_1",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "profit_and_loss",
       "question": "Alfred buys an old scooter for Rs. 4700 and spends Rs. 800 on its repairs. If he sells the scooter for Rs. 5800, his gain percent is:",
@@ -92,6 +81,7 @@
     },
     {
       "id": "profit_and_loss_2",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "profit_and_loss",
       "question": "The cost price of 20 articles is the same as the selling price of x articles. If the profit is 25%, then the value of x is:",
@@ -101,6 +91,7 @@
     },
     {
       "id": "profit_and_loss_3",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "profit_and_loss",
       "question": "If selling price is doubled, the profit triples. Find the profit percent.",
@@ -110,6 +101,7 @@
     },
     {
       "id": "profit_and_loss_4",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "profit_and_loss",
       "question": "In a certain store, the profit is 320% of the cost. If the cost increases by 25% but the selling price remains constant, approximately what percentage of the selling price is the profit?",
@@ -119,102 +111,13 @@
     },
     {
       "id": "profit_and_loss_5",
+      "source": "IndiaBIX",
       "course_id": "aptitude_placement",
       "topic_id": "profit_and_loss",
       "question": "A vendor bought toffees at 6 for a rupee. How many for a rupee must he sell to gain 20%?",
       "options": [],
       "correct_option": null,
       "explanation": "C.P. of 6 toffees = Re. 1 S.P. of 6 toffees = 120% of Re. 1 = Rs. 6 5 For Rs. 6 , toffees sold = 6. 5 For Re. 1, toffees sold = 6 x 5 = 5. 6 Video Explanation: https://youtu.be/7wKrnZ0LKA8"
-    },
-    {
-      "id": "percentage_1",
-      "course_id": "aptitude_placement",
-      "topic_id": "percentage",
-      "question": "A batsman scored 110 runs which included 3 boundaries and 8 sixes. What percent of his total score did he make by running between the wickets?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Number of runs made by running = 110 - (3 x 4 + 8 x 6) = 110 - (60) = 50. Required percentage = 50 x 100 % = 45 5 % 110 11 Video Explanation: https://youtu.be/X2zTnABqEHU"
-    },
-    {
-      "id": "percentage_2",
-      "course_id": "aptitude_placement",
-      "topic_id": "percentage",
-      "question": "Two students appeared at an examination. One of them secured 9 marks more than the other and his marks was 56% of the sum of their marks. The marks obtained by them are:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Let their marks be ( x + 9) and x . Then, x + 9 = 56 ( x + 9 + x ) 100 25( x + 9) = 14(2 x + 9) 3 x = 99 x = 33 So, their marks are 42 and 33."
-    },
-    {
-      "id": "percentage_3",
-      "course_id": "aptitude_placement",
-      "topic_id": "percentage",
-      "question": "A fruit seller had some apples. He sells 40% apples and still has 420 apples. Originally, he had:",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Suppose originally he had x apples. Then, (100 - 40)% of x = 420. 60 x x = 420 100 x = 420 x 100 = 700. 60 Video Explanation: https://youtu.be/-Pv25Do3WwY"
-    },
-    {
-      "id": "percentage_4",
-      "course_id": "aptitude_placement",
-      "topic_id": "percentage",
-      "question": "What percentage of numbers from 1 to 70 have 1 or 9 in the unit's digit?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "Clearly, the numbers which have 1 or 9 in the unit's digit, have squares that end in the digit 1. Such numbers from 1 to 70 are 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69. Number of such number =14 Required percentage = 14 x 100 % = 20%. 70 Video Explanation: https://youtu.be/cBamI6iRNIA"
-    },
-    {
-      "id": "percentage_5",
-      "course_id": "aptitude_placement",
-      "topic_id": "percentage",
-      "question": "If A = x % of y and B = y % of x , then which of the following is true?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "x % of y = x x y = y x x = y % of x 100 100 A = B."
-    },
-    {
-      "id": "c_pointers_1",
-      "course_id": "cs_engineering",
-      "topic_id": "c_pointers",
-      "question": "What is (void*)0?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "No answer description is available. Let's discuss."
-    },
-    {
-      "id": "c_pointers_2",
-      "course_id": "cs_engineering",
-      "topic_id": "c_pointers",
-      "question": "Can you combine the following two statements into one? char *p; p = (char*) malloc(100);",
-      "options": [],
-      "correct_option": null,
-      "explanation": "No answer description is available. Let's discuss."
-    },
-    {
-      "id": "c_pointers_3",
-      "course_id": "cs_engineering",
-      "topic_id": "c_pointers",
-      "question": "In which header file is the NULL macro defined?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "The macro \"NULL\" is defined in locale.h, stddef.h, stdio.h, stdlib.h, string.h, time.h, and wchar.h."
-    },
-    {
-      "id": "c_pointers_4",
-      "course_id": "cs_engineering",
-      "topic_id": "c_pointers",
-      "question": "How many bytes are occupied by near, far and huge pointers (DOS)?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "near=2 , far=4 and huge=4 pointers exist only under DOS. Under windows and Linux every pointers is 4 bytes long."
-    },
-    {
-      "id": "c_pointers_5",
-      "course_id": "cs_engineering",
-      "topic_id": "c_pointers",
-      "question": "If a variable is a pointer to a structure, then which of the following operator is used to access data members of the structure through the pointer variable?",
-      "options": [],
-      "correct_option": null,
-      "explanation": "No answer description is available. Let's discuss."
     }
   ]
 }
