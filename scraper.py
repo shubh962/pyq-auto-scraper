@@ -4,7 +4,9 @@ import json
 import re
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5"
 }
 
 def clean_text(text: str) -> str:
@@ -14,56 +16,61 @@ def clean_text(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
+def extract_options_and_answer(container):
+    options = []
+    correct_option = None
+
+    # --- 1. Robust Options Parsing ---
+    # IndiaBIX table rows pattern
+    opt_rows = container.select("table.bix-tbl-options tr, tr[id^='trOption_']")
+    for row in opt_rows:
+        tds = row.find_all("td")
+        if len(tds) >= 2:
+            letter = clean_text(tds[0].get_text()).replace(".", "").replace("(", "").replace(")", "").strip().upper()
+            val = clean_text(tds[1].get_text(separator=" ", strip=True))
+            if letter in ["A", "B", "C", "D", "E"] and val:
+                options.append({"id": letter, "text": val})
+
+    # Fallback if rendered with div classes
+    if not options:
+        div_opts = container.select(".bix-div-option, .bix-opt-row, .d-flex.flex-row")
+        for d in div_opts:
+            raw = clean_text(d.get_text(separator=" ", strip=True))
+            match = re.match(r'^([A-E])[\.\)]\s*(.+)', raw)
+            if match:
+                options.append({"id": match.group(1).upper(), "text": match.group(2).strip()})
+
+    # --- 2. Robust Correct Option Parsing ---
+    # Case A: Span text like "Option B"
+    ans_span = container.select_one(".bix-ans-option, .jq-pnl-answer, .pnl-answer")
+    if ans_span:
+        match = re.search(r'Option\s*([A-E])', ans_span.get_text(), re.IGNORECASE)
+        if match:
+            correct_option = match.group(1).upper()
+
+    # Case B: Hidden input value (maps 1->A, 2->B, 3->C, 4->D)
+    if not correct_option:
+        ans_input = container.select_one("input.jq-hdnakqb, input[name^='hdnAnq']")
+        if ans_input and ans_input.get("value"):
+            raw_val = ans_input.get("value").strip().upper()
+            num_map = {"1": "A", "2": "B", "3": "C", "4": "D", "5": "E"}
+            correct_option = num_map.get(raw_val, raw_val if raw_val in ["A", "B", "C", "D", "E"] else None)
+
+    return options, correct_option
+
 def scrape_single_page(html_content, course_id, topic_id, start_idx=1):
     questions = []
     soup = BeautifulSoup(html_content, "html.parser")
     containers = soup.select(".bix-div-container")
     
     for idx, c in enumerate(containers):
-        # 1. Question Text
         q_text_el = c.select_one(".bix-td-qtxt")
         if not q_text_el:
             continue
         q_text = clean_text(q_text_el.get_text(separator=" ", strip=True))
 
-        # 2. Extract Options (Handles modern IndiaBIX nested spans & divs)
-        options = []
-        option_wrappers = c.select(".bix-div-option, .bix-opt-row, tr[id^='trOption_']")
-        
-        if option_wrappers:
-            for opt_wrap in option_wrappers:
-                order_el = opt_wrap.select_one(".bix-opt-order, .bix-td-option-order, [id^='tdOptionLetter_']")
-                val_el = opt_wrap.select_one(".bix-opt-desc, .bix-td-option-val, [id^='tdOptionValue_']")
-                
-                if order_el and val_el:
-                    opt_id = order_el.get_text(strip=True).replace(".", "").replace("(", "").replace(")", "").strip().upper()
-                    opt_val = clean_text(val_el.get_text(separator=" ", strip=True))
-                    if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
-                        options.append({"id": opt_id, "text": opt_val})
-        
-        # Fallback table parser
-        if not options:
-            for row in c.select("table.bix-tbl-options tr"):
-                cells = row.find_all("td")
-                if len(cells) >= 2:
-                    opt_id = cells[0].get_text(strip=True).replace(".", "").replace("(", "").replace(")", "").strip().upper()
-                    opt_val = clean_text(cells[1].get_text(separator=" ", strip=True))
-                    if opt_id in ["A", "B", "C", "D", "E"] and opt_val:
-                        options.append({"id": opt_id, "text": opt_val})
+        options, correct_ans = extract_options_and_answer(c)
 
-        # 3. Correct Answer Extraction
-        correct_ans = None
-        ans_input = c.select_one("input[name^='hdnAnq'], input.jq-hdnakqb")
-        if ans_input and ans_input.get("value"):
-            correct_ans = ans_input.get("value").strip().upper()
-        else:
-            ans_div = c.select_one(".bix-div-answer, .jq-pnl-answer")
-            if ans_div:
-                match = re.search(r'Option\s*([A-E])', ans_div.get_text(), re.IGNORECASE)
-                if match:
-                    correct_ans = match.group(1).upper()
-
-        # 4. Explanation
         exp_el = c.select_one(".bix-ans-description, .div-explanation")
         explanation = clean_text(exp_el.get_text(separator=" ", strip=True)) if exp_el else None
 
@@ -169,5 +176,5 @@ if __name__ == "__main__":
     with open("master_questions.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"Processed {len(all_questions)} questions with full options & answers.")
+    print(f"Processed {len(all_questions)} questions with accurate options & answers.")
     
